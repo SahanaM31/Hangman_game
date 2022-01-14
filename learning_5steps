@@ -1,0 +1,103 @@
+art = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+
+word_list = ["ardvark", "baboon", "camel", "bookstore",]
+
+#Random selection of word from list
+
+import random
+
+for i in range (1):
+  chosen_word = list(random.choice(word_list))
+print(chosen_word)
+
+#Displaying the words as blanks "_"
+
+display = []
+for i in chosen_word:
+  display += "_"
+#To know length of the word
+length = len(chosen_word)
+
+#Using while loop to get the input till user find the correct word.
+lives = len(art)-1
+
+game = False
+while not game:
+  guess_letter = input(str('User to guess a letter? \n'))
+  for a in range(0,length):
+    letter = chosen_word[a]
+    if guess_letter == chosen_word[a]:
+      display[a] = letter
+  if guess_letter not in chosen_word:
+  # reduce the lives if the guess letter is wrong - eventually the user loose after 6 guesses.
+    lives -= 1
+    if lives == 0:
+      game = True
+      print('You Loose')
+  
+  print(display)
+  # Once the infil is correct and all the words are filled then to show we won.
+  if '_' not in display:
+    game =True
+    print('You Win')
+  print(art[lives])
+
+
+
+
